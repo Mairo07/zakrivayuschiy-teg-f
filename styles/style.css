@@ -193,9 +193,6 @@
 }
 
 .card__content {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
   padding: 26px;
 }
 
@@ -210,6 +207,7 @@
 }
 
 .card__buttons-container {
+  margin-block-start: 26px;
   display: flex;
   justify-content: end;
   gap: 4px;
