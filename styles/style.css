@@ -122,7 +122,7 @@
 .card__title {
   margin: 3px 10px;
   font-family: inherit;
-  font-weight: var(--card-title-text-weight);
+  font-variation-settings: 'wght' var(--card-title-text-weight, 700), 'slnt' 0;
   font-size: 18px;
 }
 
@@ -200,7 +200,7 @@
 }
 
 .card__content-text {
-  font-weight: var(--card-text-weight, 400);
+  font-variation-settings: 'wght' var(--card-text-weight, 400), 'slnt' 0;
   font-size: 18px;
   line-height: 116.667%;
 }
@@ -303,15 +303,11 @@ button:hover::before {
   row-gap: 30px;
   column-gap: 20px;
   border: 2px solid var(--accent-color, #000);
-  padding: 30.5px clamp(40px, 10%, 30px);
+  padding: 30px;
   color: var(--accent-color, #000);
   background-color: var(--bg-color, #fff);
   inline-size: clamp(341px, 1.502vw + 20.96rem, 357px);
   min-inline-size: 341px;
-}
-
-.dialog__floppy {
-  align-self: center;
 }
 
 .dialog__title {
@@ -325,6 +321,7 @@ button:hover::before {
 .dialog__floppy {
   inline-size: 39px;
   block-size: 39px;
+  align-self: center;
 }
 
 .dialog__button {
@@ -341,5 +338,9 @@ button:hover::before {
   .save-button__floppy {
     inline-size: 28px;
     block-size: 28px;
+  }
+
+  .dialog[open] {
+    padding-inline: 40px;
   }
 }
