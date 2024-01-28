@@ -16,10 +16,15 @@
 
 .page {
   padding-block: 100px;
-  color: var(--accent-color, #fff);
+  color: var(--accent-color, #000);
   font-family: var(--main-text-family, Inter), sans-serif;
   background-color: var(--bg-color, #fff);
-  background-image: var(--bg-image-gradient);
+  background-image: var(
+    --bg-image-gradient,
+    repeating-linear-gradient(90deg, #d3d3d3 0px 2px, transparent 2px 4px),
+    repeating-linear-gradient(#d3d3d3 0px 2px, transparent 2px 4px),
+    linear-gradient(#e7e7e7, #1a1a1a)
+  );
   background-size: cover;
   background-attachment: fixed;
   min-inline-size: 375px;
@@ -28,9 +33,9 @@
 
 .section {
   margin: 0 auto;
-  border: solid 2px var(--accent-color);
-  background-color: var(--bg-color);
-  inline-size: var(--section-inline-size);
+  border: solid 2px var(--accent-color, #000);
+  background-color: var(--bg-color, #fff);
+  inline-size: var(--section-inline-size, clamp(375px, 100%, 700px));
 }
 
 .header {
@@ -39,12 +44,12 @@
   align-items: center;
   margin-block-end: 100px;
   padding-block: clamp(120px, 7.14797rem + 1.502vw, 136px) 25px;
-  font-family: var(--accent-text-family, PressStart2P), sans-serif;
+  font-family: var(--accent-text-family, PressStart2P), fantasy;
 }
 
 .header__logo {
   margin-block-end: 20px;
-  font-family: var(--accent-text-family, PressStart2P), sans-serif;
+  font-family: var(--accent-text-family, PressStart2P), fantasy;
   font-weight: 400;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   text-decoration: none;
@@ -122,13 +127,13 @@
 .card__title {
   margin: 3px 10px;
   font-family: inherit;
-  font-variation-settings: 'wght' var(--card-title-text-weight, 700), 'slnt' 0;
   font-size: 18px;
+  font-variation-settings: "wght" var(--card-title-text-weight, 700), "slnt" 0;
 }
 
 .card__picture-container {
   position: relative;
-  border-block: solid 2px var(--accent-color);
+  border-block: solid 2px var(--accent-color, #000);
 }
 
 .card__picture {
@@ -171,24 +176,25 @@
   position: absolute;
   opacity: 0.5;
   color: var(--accent-color, #000);
-  font-family: var(--accent-text-family, PressStart2P), sans-serif;
+  font-family: var(--accent-text-family, PressStart2P), fantasy;
   font-weight: 400;
   font-size: 14px;
-  text-shadow: -1px 0 var(--stroke-color), 0px 1px var(--stroke-color),
-    1px 0 var(--stroke-color), 0 -1px var(--stroke-color);
-  inset-inline-end: 11px;
+  text-shadow: -1px 0 var(--stroke-color, #fff),
+    0px 1px var(--stroke-color, #fff), 1px 0 var(--stroke-color, #fff),
+    0 -1px var(--stroke-color, #fff);
+  inset-inline-end: 25px;
   inset-block: 27px;
   mix-blend-mode: hard-light;
 }
 
 @supports (
-  (text-stroke: 1px var(--stroke-color)) or
-    (-webkit-text-stroke: 1px var(--stroke-color))
+  (text-stroke: 1px var(--stroke-color, #fff)) or
+    (-webkit-text-stroke: 1px var(--stroke-color, #fff))
 ) {
   .card__picture-label {
     text-shadow: none;
-    -webkit-text-stroke: 1px var(--stroke-color);
-    text-stroke: 1px var(--stroke-color);
+    -webkit-text-stroke: 1px var(--stroke-color, #fff);
+    text-stroke: 1px var(--stroke-color, #fff);
   }
 }
 
@@ -197,9 +203,9 @@
 }
 
 .card__content-text {
-  font-variation-settings: 'wght' var(--card-text-weight, 400), 'slnt' 0;
   font-size: 18px;
   line-height: 116.667%;
+  font-variation-settings: "wght" var(--card-text-weight, 400), "slnt" 0;
 }
 
 .card__content-text + .card__content-text {
@@ -207,10 +213,10 @@
 }
 
 .card__buttons-container {
-  margin-block-start: 26px;
   display: flex;
   justify-content: end;
   gap: 4px;
+  margin-block-start: 26px;
 }
 
 .card__icon-button {
@@ -225,7 +231,7 @@
 }
 
 .card__icon-button:focus-visible {
-  border: solid 2px var(--accent-color);
+  border: solid 2px var(--accent-color, #000);
 }
 
 .card__like-button {
@@ -235,7 +241,7 @@
 
 .button__text {
   color: var(--button-text-color, #fff);
-  font-family: var(--accent-text-family, PressStart2P), sans-serif;
+  font-family: var(--accent-text-family, PressStart2P), fantasy;
   font-weight: 400;
   font-size: 14px;
   line-height: 90%;
@@ -251,7 +257,7 @@
 }
 
 .save-button__floppy {
-  color: var(--button-text-color);
+  color: var(--button-text-color, #fff);
   inline-size: 21px;
   block-size: 21px;
   mix-blend-mode: difference;
@@ -269,14 +275,14 @@
 }
 
 .button:focus-visible {
-  box-shadow: 2px 2px 0 var(--accent-color);
+  box-shadow: 2px 2px 0 var(--accent-color, #000);
 }
 
 .button::before {
   content: "";
   position: absolute;
   display: block;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color, #000);
   transition: transform 0.5s ease-in-out;
   transform: scaleX(0);
   transform-origin: left;
@@ -309,7 +315,7 @@ button:hover::before {
 }
 
 .dialog__title {
-  font-family: var(--accent-text-family);
+  font-family: var(--accent-text-family, PressStart2P), fantasy;
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
@@ -317,18 +323,27 @@ button:hover::before {
 }
 
 .dialog__floppy {
+  align-self: center;
   inline-size: 39px;
   block-size: 39px;
-  align-self: center;
+}
+
+.dialog__form {
+  grid-column: span 2;
 }
 
 .dialog__button {
-  grid-column: span 2;
   padding: 9px 17px;
   text-transform: uppercase;
+  inline-size: 100%;
 }
 
 @media (width < 376px) {
+  .card__picture-label {
+    inset-inline-end: 11px;
+    inset-block: 23px;
+  }
+
   .save-button {
     flex-direction: column;
   }
