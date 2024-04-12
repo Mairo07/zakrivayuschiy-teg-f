@@ -3,3 +3,6 @@
 Основной задачей работы была практика в создании анимаций и обработки изображений.  
 
 https://github.com/Mairo07/zakrivayuschiy-teg-f.git
+
+Ссылка на опубликованный проект
+https://mairo07.github.io/zakrivayuschiy-teg-f/
